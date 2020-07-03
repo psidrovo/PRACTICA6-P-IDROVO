@@ -1,0 +1,1 @@
+# PRACTICA 06 Idrovo P
