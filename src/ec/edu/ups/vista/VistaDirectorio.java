@@ -9,7 +9,13 @@ import ec.edu.ups.controlador.ControladorDirectorio;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.crypto.AEADBadTagException;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -18,10 +24,15 @@ import javax.swing.JOptionPane;
 public class VistaDirectorio extends javax.swing.JFrame {
 
     private ControladorDirectorio controladorDirectorio;
+    private String rutaAntigua;
 
     public VistaDirectorio() {
         initComponents();
         controladorDirectorio = new ControladorDirectorio();
+        rutaAntigua = "";
+        this.setLocationRelativeTo(this);
+        this.setResizable(false);
+        this.setIconImage(new ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/carpeta.png")).getImage());
     }
 
     /**
@@ -50,7 +61,9 @@ public class VistaDirectorio extends javax.swing.JFrame {
         mnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DIRECTORIO");
 
+        lstDirectorio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         lstDirectorio.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstDirectorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -61,9 +74,12 @@ public class VistaDirectorio extends javax.swing.JFrame {
 
         txtaInformacion.setEditable(false);
         txtaInformacion.setColumns(20);
+        txtaInformacion.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtaInformacion.setRows(5);
         jScrollPane2.setViewportView(txtaInformacion);
 
+        btArchivosOcultos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btArchivosOcultos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/estadistica.png"))); // NOI18N
         btArchivosOcultos.setText("Listar Archivos Ocultos");
         btArchivosOcultos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +87,8 @@ public class VistaDirectorio extends javax.swing.JFrame {
             }
         });
 
+        btDirectorioOculto.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btDirectorioOculto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/carpeta.png"))); // NOI18N
         btDirectorioOculto.setText("Listar Directorios Ocultos");
         btDirectorioOculto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,15 +96,22 @@ public class VistaDirectorio extends javax.swing.JFrame {
             }
         });
 
+        txtRuta.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtRuta.setText("C:\\");
             txtRuta.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    txtRutaFocusGained(evt);
+                }
                 public void focusLost(java.awt.event.FocusEvent evt) {
                     txtRutaFocusLost(evt);
                 }
             });
 
+            jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
             jLabel1.setText("RUTA:");
 
+            btArchivos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+            btArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/estadistica.png"))); // NOI18N
             btArchivos.setText("Listar Archivos ");
             btArchivos.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +119,11 @@ public class VistaDirectorio extends javax.swing.JFrame {
                 }
             });
 
+            jMenuBar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
             jMenu1.setText("GESTIONAR DIRECTORIO");
 
+            mnCrear.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
             mnCrear.setText("Crear");
             mnCrear.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +132,7 @@ public class VistaDirectorio extends javax.swing.JFrame {
             });
             jMenu1.add(mnCrear);
 
+            mnEliminar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
             mnEliminar.setText("Eliminar");
             mnEliminar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +141,7 @@ public class VistaDirectorio extends javax.swing.JFrame {
             });
             jMenu1.add(mnEliminar);
 
+            mnRenombrar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
             mnRenombrar.setText("Renombrar");
             mnRenombrar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +150,7 @@ public class VistaDirectorio extends javax.swing.JFrame {
             });
             jMenu1.add(mnRenombrar);
 
+            mnSalir.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
             mnSalir.setText("Salir");
             mnSalir.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,48 +171,44 @@ public class VistaDirectorio extends javax.swing.JFrame {
                     .addGap(38, 38, 38)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(jLabel1))
-                                .addComponent(btArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(39, 39, 39)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(224, 244, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(btArchivosOcultos)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(btDirectorioOculto)
-                                    .addGap(118, 118, 118))))
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtRuta))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(77, 77, 77))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(99, 99, 99)
+                            .addComponent(btArchivosOcultos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(80, 80, 80)
+                            .addComponent(btDirectorioOculto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGap(38, 38, 38))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(28, 28, 28)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btArchivosOcultos)
+                                .addComponent(btArchivos)
                                 .addComponent(btDirectorioOculto)
-                                .addComponent(btArchivos))
-                            .addGap(31, 31, 31)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btArchivosOcultos)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(118, 118, 118)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(81, Short.MAX_VALUE))
+                            .addGap(20, 20, 20)
+                            .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(20, 20, 20))
             );
 
             pack();
@@ -199,8 +226,10 @@ public class VistaDirectorio extends javax.swing.JFrame {
                 imp[i] = directorio.get(i);
             }
             lstDirectorio.setListData(imp);
+            rutaAntigua = txtRuta.getText();
         } else {
-            txtRuta.setText("C:\\");
+            JOptionPane.showMessageDialog(null, "<html>El DIRECTORIO <strong>" + txtRuta.getText() + "</strong> NO EXISTE", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtRuta.setText(rutaAntigua);
         }
     }
     private void btDirectorioOcultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDirectorioOcultoActionPerformed
@@ -208,10 +237,13 @@ public class VistaDirectorio extends javax.swing.JFrame {
         List<String> directorio = controladorDirectorio.listarDirectoriosOcultos();
         if (!directorio.isEmpty()) {
             String imp[] = new String[directorio.size()];
+            DefaultListModel<String> model = new DefaultListModel<>();
             for (int i = 0; i < imp.length; i++) {
-                imp[i] = directorio.get(i);
+                model.addElement(directorio.get(i));
+                //imp[i] = directorio.get(i);
             }
-            lstDirectorio.setListData(imp);
+            //lstDirectorio.setListData(imp);
+            lstDirectorio.setModel(model);
         }
     }//GEN-LAST:event_btDirectorioOcultoActionPerformed
 
@@ -241,7 +273,9 @@ public class VistaDirectorio extends javax.swing.JFrame {
 
     private void lstDirectorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstDirectorioMouseClicked
         if (!lstDirectorio.isSelectionEmpty()) {
-            controladorDirectorio.setRuta(txtRuta.getText() + "\\" + lstDirectorio.getSelectedValue().toString());
+            txtRuta.setText(rutaAntigua);
+            txtRuta.setText(txtRuta.getText() + "\\" + lstDirectorio.getSelectedValue().toString());
+            controladorDirectorio.setRuta(txtRuta.getText());
             String datos = controladorDirectorio.mostrarInformacion();
             txtaInformacion.setText(datos);
         }
@@ -292,6 +326,10 @@ public class VistaDirectorio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnRenombrarActionPerformed
 
+    private void txtRutaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutaFocusGained
+        rutaAntigua = txtRuta.getText();
+    }//GEN-LAST:event_txtRutaFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -322,6 +360,11 @@ public class VistaDirectorio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                    System.out.println("Error setting Java LAF: " + e);
+                }
                 new VistaDirectorio().setVisible(true);
             }
         });

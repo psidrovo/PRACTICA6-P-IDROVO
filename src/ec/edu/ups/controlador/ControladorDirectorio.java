@@ -67,6 +67,9 @@ public class ControladorDirectorio {
         File raiz = new File(ruta);
         if (raiz.exists()) {
             File[] elementos = raiz.listFiles();
+            if(elementos==null){
+                return null;
+            }
             for (File elemento : elementos) {
                 if (elemento.isDirectory()) {
                     if (!elemento.isHidden()) {
