@@ -97,128 +97,128 @@ public class VistaDirectorio extends javax.swing.JFrame {
         });
 
         txtRuta.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtRuta.setText("C:\\");
-            txtRuta.addFocusListener(new java.awt.event.FocusAdapter() {
-                public void focusGained(java.awt.event.FocusEvent evt) {
-                    txtRutaFocusGained(evt);
-                }
-                public void focusLost(java.awt.event.FocusEvent evt) {
-                    txtRutaFocusLost(evt);
-                }
-            });
+        txtRuta.setText("D:\\PROYECTO JAVA");
+        txtRuta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRutaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRutaFocusLost(evt);
+            }
+        });
 
-            jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-            jLabel1.setText("RUTA:");
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel1.setText("RUTA:");
 
-            btArchivos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-            btArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/estadistica.png"))); // NOI18N
-            btArchivos.setText("Listar Archivos ");
-            btArchivos.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btArchivosActionPerformed(evt);
-                }
-            });
+        btArchivos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/estadistica.png"))); // NOI18N
+        btArchivos.setText("Listar Archivos ");
+        btArchivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btArchivosActionPerformed(evt);
+            }
+        });
 
-            jMenuBar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jMenuBar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-            jMenu1.setText("GESTIONAR DIRECTORIO");
+        jMenu1.setText("GESTIONAR DIRECTORIO");
 
-            mnCrear.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-            mnCrear.setText("Crear");
-            mnCrear.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    mnCrearActionPerformed(evt);
-                }
-            });
-            jMenu1.add(mnCrear);
+        mnCrear.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        mnCrear.setText("Crear");
+        mnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCrearActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnCrear);
 
-            mnEliminar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-            mnEliminar.setText("Eliminar");
-            mnEliminar.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    mnEliminarActionPerformed(evt);
-                }
-            });
-            jMenu1.add(mnEliminar);
+        mnEliminar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        mnEliminar.setText("Eliminar");
+        mnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnEliminarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnEliminar);
 
-            mnRenombrar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-            mnRenombrar.setText("Renombrar");
-            mnRenombrar.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    mnRenombrarActionPerformed(evt);
-                }
-            });
-            jMenu1.add(mnRenombrar);
+        mnRenombrar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        mnRenombrar.setText("Renombrar");
+        mnRenombrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRenombrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnRenombrar);
 
-            mnSalir.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-            mnSalir.setText("Salir");
-            mnSalir.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    mnSalirActionPerformed(evt);
-                }
-            });
-            jMenu1.add(mnSalir);
+        mnSalir.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        mnSalir.setText("Salir");
+        mnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnSalir);
 
-            jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu1);
 
-            setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar1);
 
-            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-            getContentPane().setLayout(layout);
-            layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtRuta))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(99, 99, 99)
-                            .addComponent(btArchivosOcultos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(80, 80, 80)
-                            .addComponent(btDirectorioOculto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGap(38, 38, 38))
-            );
-            layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btArchivos)
-                                .addComponent(btDirectorioOculto)
-                                .addComponent(btArchivosOcultos)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(20, 20, 20))
-            );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRuta))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(btArchivosOcultos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(80, 80, 80)
+                        .addComponent(btDirectorioOculto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(38, 38, 38))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btArchivos)
+                            .addComponent(btDirectorioOculto)
+                            .addComponent(btArchivosOcultos)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
+        );
 
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void txtRutaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutaFocusLost
         Listar();
     }//GEN-LAST:event_txtRutaFocusLost
     public void Listar() {
-        controladorDirectorio.setRuta(txtRuta.getText());
+        controladorDirectorio.setRuta(rutaAntigua);
         List<String> directorio = controladorDirectorio.listarDirectorio();
         if (directorio != null) {
             String imp[] = new String[directorio.size()];
@@ -273,8 +273,7 @@ public class VistaDirectorio extends javax.swing.JFrame {
 
     private void lstDirectorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstDirectorioMouseClicked
         if (!lstDirectorio.isSelectionEmpty()) {
-            txtRuta.setText(rutaAntigua);
-            txtRuta.setText(txtRuta.getText() + "\\" + lstDirectorio.getSelectedValue().toString());
+            txtRuta.setText(rutaAntigua + "\\" + lstDirectorio.getSelectedValue().toString());
             controladorDirectorio.setRuta(txtRuta.getText());
             String datos = controladorDirectorio.mostrarInformacion();
             txtaInformacion.setText(datos);
@@ -287,10 +286,16 @@ public class VistaDirectorio extends javax.swing.JFrame {
 
     private void mnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCrearActionPerformed
         String nombreDir = JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL NUEVO DIRECTORIO", "");
-        if (nombreDir.contains(".")) {
-            controladorDirectorio.crearArchivo(txtRuta.getText() + "\\" + nombreDir);
-        } else {
-            controladorDirectorio.crearDirectorio(txtRuta.getText() + "\\" + nombreDir);
+        if(nombreDir!=null ){
+            if(!nombreDir.equals("")){
+                if (nombreDir.contains(".")) {
+                    controladorDirectorio.crearArchivo(rutaAntigua + "\\" + nombreDir);
+                } else {
+                    controladorDirectorio.crearDirectorio(rutaAntigua + "\\" + nombreDir);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "NOMBRE NO VALIDO", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
         Listar();
     }//GEN-LAST:event_mnCrearActionPerformed
@@ -301,8 +306,9 @@ public class VistaDirectorio extends javax.swing.JFrame {
                     "<html>DESEA ELIMINAR EL REGISTRO <strong>" + lstDirectorio.getSelectedValue() + "</strong> ?</html>");
 
             if (JOptionPane.OK_OPTION == confirmar) {
-                controladorDirectorio.eliminarDirectorio(new File(txtRuta.getText() + "\\" + lstDirectorio.getSelectedValue().toString()));
+                controladorDirectorio.eliminarDirectorio(new File(rutaAntigua + "\\" + lstDirectorio.getSelectedValue().toString()));
                 JOptionPane.showMessageDialog(null, "EL DIRECTORIO " + lstDirectorio.getSelectedValue() + " HA SIDO ELIMINADO", "ELIMINAR", JOptionPane.INFORMATION_MESSAGE);
+                txtRuta.setText(rutaAntigua);
                 Listar();
             }
         } else {
@@ -317,7 +323,7 @@ public class VistaDirectorio extends javax.swing.JFrame {
 
             if (JOptionPane.OK_OPTION == confirmar) {
                 String nombreDir = JOptionPane.showInputDialog("INGRESE EL NUEVO NOMBRE DEL NUEVO DIRECTORIO", "");
-                controladorDirectorio.renombrarDirectorio(txtRuta.getText() + "\\" + lstDirectorio.getSelectedValue().toString(), txtRuta.getText() + "\\" + nombreDir);
+                controladorDirectorio.renombrarDirectorio(rutaAntigua + "\\" + lstDirectorio.getSelectedValue().toString(), rutaAntigua + "\\" + nombreDir);
                 JOptionPane.showMessageDialog(null, "EL DIRECTORIO HA SIDO RENOMBRADO ", "RENOMBRADO", JOptionPane.INFORMATION_MESSAGE);
                 Listar();
             }

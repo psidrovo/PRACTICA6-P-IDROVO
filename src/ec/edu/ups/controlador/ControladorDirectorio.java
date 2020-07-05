@@ -20,14 +20,7 @@ import java.util.logging.Logger;
  */
 public class ControladorDirectorio {
 
-    String ruta;
-    String nuevoNombre;
-    File archivo;
-    List<File> archivos;
-
-    public ControladorDirectorio() {
-        archivos = new ArrayList<>();
-    }
+    private String ruta;
 
     public String getRuta() {
         return ruta;
@@ -35,14 +28,6 @@ public class ControladorDirectorio {
 
     public void setRuta(String ruta) {
         this.ruta = ruta;
-    }
-
-    public File getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(File archivo) {
-        this.archivo = archivo;
     }
 
     public List<String> listarArchivos() {
@@ -205,6 +190,8 @@ public class ControladorDirectorio {
                     tamanio += tamanioDir(archivosTam[x]);
                 }
             }
+        }else if(rutaInformacion.isFile()){
+            tamanio += ((rutaInformacion.length() / 1024.0));
         }
         return tamanio;
     }
